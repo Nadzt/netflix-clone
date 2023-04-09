@@ -1,0 +1,123 @@
+.header {
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: -1;
+    overflow: hidden;
+
+    &__video {
+        transform: translate(-16.75%, -18%);
+        width: 150%;
+        height: 150%;
+        z-index: 0;
+    }
+
+    &__background-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 50;
+        opacity: 1;
+        transition: all .5s ease-in;
+    }
+
+    &__background-img--hidden {
+        opacity: 0;
+    }
+
+    &__bottom-fade {
+        width: 100%;
+        height: 15vw;
+        position: absolute;
+        bottom: 0;
+        background-image: linear-gradient(
+            to bottom,
+            rgba(20, 20, 20, 0) 0,
+            rgba(20, 20, 20, 0.15) 15%,
+            rgba(20, 20, 20, 0.35) 30%,
+            rgba(20, 20, 20, 0.55) 45%,
+            rgb(20, 20, 20) 68%,
+            rgb(20, 20, 20)
+        );
+        z-index: 55;
+    }
+
+    &__details {
+        width: 36%;
+        z-index: 10;
+        position: absolute;
+        bottom: 26%;
+        left: 60px;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        margin-top: 1rem;
+    }
+
+    &__title {
+        font-size: 6rem;
+        text-transform: uppercase;
+        transform: scale(1.55);
+        transform-origin: left bottom;
+        transition: all 1.3s;
+
+        &--animated {
+            transform: scale(1);
+        }
+    }
+
+    &__description {
+        font-size: 2.3rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,.45);
+        opacity: 1;
+        margin-bottom: 0;
+        transition: all 1.5s;
+    }
+
+    &__buttons {
+        display: flex;
+        margin-top: 2.9rem;
+        gap: 1.45rem;
+        z-index: 5;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 1.2rem 3.5rem 1.2rem 2.9rem;
+        font-size: 2.3rem;
+        font-weight: 500;
+        border-radius: 4px;
+
+        &--1 {
+            color: black;
+            background-color: rgba(255, 255, 255, 1);
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.75);
+            }
+        }
+
+        &--2 {
+            color: white;
+            background-color: rgba(109, 109, 110, 0.7);
+
+            &:hover {
+                background-color: rgba(109, 109, 110, 0.4);
+            }
+        }
+    }
+
+    &__icon {
+        margin-right: 1.4rem;
+        height: 34px;
+        width: 34px;
+    }
+}

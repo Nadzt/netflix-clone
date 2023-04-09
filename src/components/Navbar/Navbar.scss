@@ -1,0 +1,74 @@
+.navbar {
+    height: 6.8rem;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0,0,0,.7) 10%,
+        transparent
+    );
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+
+    &__logo {
+        height: 25px;
+        width: 92.5px;
+        cursor: pointer;
+        margin-right: 45px;
+    }
+
+    &__links {
+        display: flex;
+        font-size: 1.4rem;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    &__link,
+    &__link:visited {
+        color: #b3b3b3; 
+    }
+
+    &__link--active,
+    &__link--active:visited {
+        color: white;
+        cursor: default;
+        font-weight: 500;
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 21px;
+    }
+
+    &__right-element {
+        height: 32px;
+        display: flex;
+        align-items: center;
+        color: white;
+        cursor: pointer;
+    }
+    
+    &__right-button {
+        border: none;
+        background-color: transparent;
+        color: inherit;
+        cursor: pointer;
+        margin-top: 2px;
+    }
+
+    &__user-avatar {
+        height: 100%;
+        border-radius: 4px;
+    }
+
+    &__right-arrow {
+        border-color: #fff transparent transparent;
+        border-style: solid;
+        border-width: 5px 5px 0;
+        height: 0;
+        margin-left: 10px;
+        width: 0;
+    }
+}

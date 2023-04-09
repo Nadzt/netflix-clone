@@ -1,0 +1,48 @@
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+      scroll-behavior: smooth;
+    }
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+::selection {
+    background-color: none;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+
+    /* @media only screen and (max-width: 1000px) {
+        font-size: 50%;
+    } */
+}
+
+body {
+    background-color: #141414;
+    font-family: 'Roboto', sans-serif;
+    color: #BDBDBD;
+    font-weight: 400;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.prevent-select {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
