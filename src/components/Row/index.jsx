@@ -41,6 +41,12 @@ const Row = ({marginTop = 0}) => {
                         />
                     </div>
                 )) }
+                <button className='row__button row__button--left'>
+                    &#10096;
+                </button>
+                <button className='row__button row__button--right'>
+                    &#10097;
+                </button>
             </div>
         </div>
     )
