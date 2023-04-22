@@ -47,3 +47,29 @@
         }
     }
 }
+
+@media only screen and (max-width: 1366px) {
+    .row {
+        
+        &__title,
+        &__content {
+            padding: 0 4%;
+        }
+
+        &__content {
+            gap: 5.5px
+        }
+
+        &__item {
+            flex: 0 0 19.6%;
+        }
+
+        &__button {
+            width: 4%;
+        }
+
+        &__image {
+            border-radius: 2px;
+        }
+    }
+}

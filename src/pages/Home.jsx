@@ -7,7 +7,7 @@ const Home = () => {
     <div>
         <Header />
         <Row
-            marginTop={"80vh"}
+            marginTop={"82vh"}
         />
     </div>
   )

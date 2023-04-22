@@ -6,7 +6,7 @@ import tmdb, { request } from '../../api/tmdb'
 const Row = ({marginTop = 0}) => {
     const [movies, setMovies] = useState([])
     const baseImgUrl = "https://image.tmdb.org/t/p/w500/"
-    
+
     useEffect(() => {
         fetchMovies()
         return () => {
@@ -23,7 +23,7 @@ const Row = ({marginTop = 0}) => {
     return (
         <div 
             className='row'
-            style={{ marginTop }}    
+            style={ marginTop ? { marginTop } : {} }    
         >
             <h2 className='row__title'>
                 Title

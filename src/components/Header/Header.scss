@@ -58,6 +58,10 @@
         flex-direction: column;
         color: white;
         margin-top: 1rem;
+
+        @media only screen and (max-width: 1366px) {
+            left: 4%
+        }
     }
 
     &__title {

@@ -9,6 +9,10 @@
     display: flex;
     align-items: center;
 
+    @media only screen and (max-width: 1366px) {
+        padding: 0 4%
+    }
+
     &__logo {
         height: 25px;
         width: 92.5px;
