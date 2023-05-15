@@ -5,6 +5,7 @@ import Header from "./Header"
 import Navbar from "./Navbar"
 import PopUp from "./PopUp"
 import Row from "./Row"
+import ShowAllResults from "./ShowAllResults/index.jsx"
 import TopToday from "./TopToday"
 
 export {
@@ -15,5 +16,6 @@ export {
     Navbar,
     PopUp,
     Row,
+    ShowAllResults,
     TopToday,
 }

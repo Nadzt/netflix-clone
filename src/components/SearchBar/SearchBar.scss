@@ -1,0 +1,30 @@
+.searchbar {
+    position: relative;
+    right: 0;
+    background-color: rgba(20, 20, 20, 0.80);
+    padding: .8rem 0rem;
+    border: 0px solid white;
+    font-size: 1.5rem;
+    width: 0px;
+    transition: all .25s ease-in-out;
+    color: white;
+
+    &::placeholder {
+        color: rgb(160, 160, 160);
+        text-transform: capitalize;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &--active {
+        width: 225px;
+        border-width: 1px;
+        padding: .8rem 2rem;
+    }
+
+    &__form {
+        position: relative;
+    }
+}

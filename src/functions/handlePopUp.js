@@ -4,10 +4,10 @@ let tmdbGenres = []
 const baseImgUrl = "https://image.tmdb.org/t/p/w500/"
 export let popUpTimeoutId = null
 
-const handlePopUp = (e, imageUrl, imagePoster, genres, title, isPending) => {
+const handlePopUp = (e, imageUrl, imagePoster, genres, title, isPending, parentY = true) => {
     //checks for animations, returns if a row is being moved
     if(isPending) return
-    
+
     // selecting the popup component and it's children for easy writing
     const popup = document.querySelector(".popup")
     const img = popup.children[0]
@@ -36,7 +36,7 @@ const handlePopUp = (e, imageUrl, imagePoster, genres, title, isPending) => {
     if(elClient.y < 30) return
 
     //places the popup over the hovered image
-    popup.style.top = `${elParentRow.offsetTop}px`
+    parentY ? popup.style.top = `${elParentRow.offsetTop}px` : popup.style.top = `${elClient.top + window.scrollY}px`
     popup.style.left = `${elClient.left}px`
     popup.style.transition = "transform .15s ease-in"
 

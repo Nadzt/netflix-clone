@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { Navbar, Footer, ErrorMessage } from "./components"
-import { Home, Series, Movies, Upcoming, Search } from './pages'
+import { Home, Series, QuerySearch, Movies, Upcoming, Search } from './pages'
 import "./App.scss"
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
                     <Route path='/genre/movies' element={<Movies />}/>
                     <Route path='/genre/new' element={<Upcoming />}/>
                     <Route path='/genre/:id' element={<Search /> }/>
+                    <Route path='/search/:query' element={<QuerySearch /> }/>
                     <Route path='*' element={<ErrorMessage />}/>
                 </Routes>
                 <Footer />
