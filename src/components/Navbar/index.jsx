@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 import logo from "../../assets/logo.png"
@@ -21,11 +21,7 @@ const renderNavLinks = () => {
         },
         {
             path: "/genre/new",
-            text: "Recently Added"
-        },
-        {
-            path: "/mylist",
-            text: "My List"
+            text: "Upcoming"
         },
     ]
 
@@ -49,9 +45,29 @@ const renderNavLinks = () => {
 }
 
 const Navbar = () => {
+    const [solidBackground, setSolidBackground] = useState(false)
+
+    const handleNavbarBG = () => {
+        if(window.scrollY > 100) return setSolidBackground(true)
+        setSolidBackground(false)
+    }
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleNavbarBG)
+
+        return () => {
+            window.removeEventListener("scroll", handleNavbarBG)
+        }
+    }, [])
+
     return (
-        <div className='navbar'>
-            <img src={logo} alt="Logo" className="navbar__logo"/>
+        <div className={`navbar ${ solidBackground && "navbar--active" }`}>
+            <Link
+                to={"/"}
+                className='navbar__logo-link'
+            >
+                <img src={logo} alt="Logo" className="navbar__logo"/>
+            </Link>
             <ul className='navbar__links'>
                 {renderNavLinks()}
             </ul>

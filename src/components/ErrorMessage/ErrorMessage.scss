@@ -1,0 +1,45 @@
+.error {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+
+    &__message {
+        font-size: 8.5rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        margin-bottom: 3.8rem;
+    }
+
+    &__subtitle {
+        font-size: 3rem;
+        font-weight: 300;
+        margin-bottom: 3.1rem;
+    }
+
+    &__button {
+        background-color: white;
+        color: black;
+        padding: 1.15rem 3.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 2.3rem;
+        font-weight: 600;
+        border: none;
+    }
+
+    &__code {
+        border-left: 2px solid #e50914;
+        font-size: 3.45rem;
+        font-weight: 100;
+        padding: 0 1vw;
+        display: inline-block;
+        margin-top: 2.85rem;
+    }
+}

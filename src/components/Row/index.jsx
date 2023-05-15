@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 import "./Row.scss"
-import tmdb, { request } from '../../api/tmdb'
+import tmdb from '../../api/tmdb'
+import { handlePopUp } from "../../functions"
 
-const Row = ({marginTop = 0}) => {
+const Row = ({marginTop = 0, title, fetchUrl}) => {
     const [movies, setMovies] = useState([])
     const [translationIndex, setTranslationIndex] = useState(0)
     const [isPending, setIsPending] = useState(false)
@@ -16,17 +17,18 @@ const Row = ({marginTop = 0}) => {
         return () => {
             fetchMovies()
         }
-    }, [])
+    }, [fetchUrl])
 
     const fetchMovies = async () => {
-        const movies = (await tmdb.get(request.trending)).data.results
+        let movies = (await tmdb.get(fetchUrl)).data.results
         setMovies(movies)
     }
 
     const handleLeftButton = () => {
         // prevents multiple clicks and makes this button only work when there are movies on the left
         if(translationIndex !== 1 || isPending) return
-        
+        setIsPending(true)
+
         const slider = sliderRef.current
 
         // same as handleRightButton
@@ -56,9 +58,12 @@ const Row = ({marginTop = 0}) => {
         if(translationIndex === 0) {
             slider.style.transform = `translateX(-${100}%)`
             slider.addEventListener("transitionend", () => {
-                setIsPending(false)
-            }, 100)
-            return setTranslationIndex(1)
+                setTimeout(() => {
+                    setTranslationIndex(1)
+                    setIsPending(false)
+                }, 100);
+            }, { once: true })
+            return
         }
 
         // this handles the infinite transition, removes and translates the slider when it finishes
@@ -72,7 +77,7 @@ const Row = ({marginTop = 0}) => {
                 slider.style.transform = `translateX(-${100}%)`
                 setTimeout(() =>{
                     slider.style.transitionDuration = "1000ms"
-                    setIsPending(false)
+                    return setIsPending(false)
                 }, 100)
             })
         })
@@ -84,7 +89,10 @@ const Row = ({marginTop = 0}) => {
             style={ marginTop ? { marginTop } : {} }    
         >
             <h2 className='row__title'>
-                Title
+                {title}
+                <div className="row__arrow">
+                    &#10097;
+                </div>
             </h2>
 
             <div className="row__content">
@@ -94,14 +102,27 @@ const Row = ({marginTop = 0}) => {
                 >
                     { movies.map((movie, index) => (
                         <div
-                        key={index}
-                        className='row__item' 
+                            key={index}
+                            className='row__item'
+                            onMouseMove={(e) => handlePopUp(
+                                e,
+                                movie.backdrop_path,
+                                movie.poster_path,
+                                movie.genre_ids,
+                                movie.title || movie.name,
+                                isPending
+                            )}
                         >
                             <img 
-                                src={baseImgUrl + movie.backdrop_path} 
-                                alt={movie.title}
+                                src={baseImgUrl + (movie.backdrop_path ? movie.backdrop_path : movie.poster_path)} 
+                                alt={movie.title || movie.name}
                                 className='row__image'
-                                />
+                            />
+                            <p className='row__item-title'>
+                                <span className="row__item-title-text">
+                                    {movie.title || movie.name}
+                                </span>
+                            </p>
                         </div>
                     )) }
                 </div>

@@ -1,0 +1,55 @@
+.dropdownLink {
+    margin: 85px 4% 0;
+    position: relative;
+    display: inline-block;
+    color: white;
+    z-index: 20000;
+    
+    &__button {
+        color: inherit;
+        background-color: black;
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        border: 1px solid white;
+        cursor: pointer;
+        
+        &:hover {
+            background-color: transparent;
+        }
+    }
+
+    &__container {
+        display: none;
+        position: absolute;
+        top: 100%;
+        background-color: black;
+        border: 1px solid hsla(0,0%,100%,.15);
+        line-height: 2.1rem;
+        padding: 5px;
+        width: 30vw;
+    }
+
+    &__container--active {
+        display: block;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+
+        &-item {
+            flex-basis: 33%;
+            padding: 1px 20px 1px 10px;
+        }
+    }
+
+    &__link:link,
+    &__link:visited {
+        color: inherit;
+        font-size: 1.4rem;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

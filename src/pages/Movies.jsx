@@ -1,17 +1,21 @@
 import React from 'react'
 
 import { request } from '../api/tmdb'
-import { Header, PopUp, Row, TopToday } from "../components"
+import { Header, PopUp, Row, TopToday, DropdownLink } from "../components"
 
-const Home = () => {
+const Movies = () => {
     return (
         <div>
             <Header 
                 fetchUrl={request.trending}
             />
             <PopUp />
+            <DropdownLink
+                title={"Movie Genres"}
+                onlyMovies
+            />
             <Row
-                marginTop={"89.25vh"}
+                marginTop={"75.75vh"}
                 title={"Trending"}
                 fetchUrl={request.trending}
             />
@@ -28,20 +32,8 @@ const Home = () => {
                 fetchUrl={request.comedy}
             />
             <Row
-                title={"Musicals"}
-                fetchUrl={request.musical}
-            />
-            <Row
                 title={"Action"}
                 fetchUrl={request.action}
-            />
-            <Row
-                title={"War"}
-                fetchUrl={request.war}
-            />
-            <Row
-                title={"Western"}
-                fetchUrl={request.western}
             />
             <Row
                 title={"Crime"}
@@ -52,19 +44,11 @@ const Home = () => {
                 fetchUrl={request.horror}
             />
             <Row
-                title={"Drama"}
-                fetchUrl={request.drama}
-            />
-            <Row
                 title={"Animated"}
                 fetchUrl={request.animated}
-            />
-            <Row
-                title={"Popular"}
-                fetchUrl={request.popular}
             />
         </div>
     )
 }
 
-export default Home
+export default Movies

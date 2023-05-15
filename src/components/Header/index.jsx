@@ -4,16 +4,23 @@ import "./Header.scss"
 import background from "../../assets/background.png"
 import tmdb, { request } from '../../api/tmdb'
 
-const pickRandomMovieWithTrailer = async (array) => {
+// /movie/movie_id/videos?language=en-US
+// /tv/series_id/videos?language=en-US
+
+const pickRandomMovieWithTrailer = async (array, isSeries) => {
     let movie = array[Math.floor(Math.random() * array.length)]
-    const movieVideos = (await tmdb.get(`/movie/${movie.id + request.video}`)).data.results
+    const movieVideos = (await tmdb.get(`/${isSeries ? "tv" : "movie" }/${movie.id + request.video}`)).data.results
     const movieTrailer = movieVideos.find(el => el.iso_639_1 === "en" && el.name.toLowerCase().includes("trailer"))
-    if(!movieTrailer) return pickRandomMovieWithTrailer(array)
+    if(!movieTrailer) return pickRandomMovieWithTrailer(array, isSeries)
     return { movie: movie , trailer: movieTrailer }
 }
 
-const Header = () => {
+const Header = ({fetchUrl, isSeries = false}) => {
     const [banner, setBanner] = useState({})
+
+    const truncate = (string, n) => {
+        return string?.length > n ? string.substr(0, n - 1) + "..." : string
+    }
 
     useEffect(() => {
         fetchHeader()
@@ -23,8 +30,8 @@ const Header = () => {
     }, [])
 
     const fetchHeader = async () => {
-        const res = (await tmdb.get(request.trending)).data.results
-        setBanner(await pickRandomMovieWithTrailer(res))
+        const res = (await tmdb.get(fetchUrl)).data.results
+        setBanner(await pickRandomMovieWithTrailer(res, isSeries))
         setTimeout(() => {
             let bannerImg = document.querySelector(".header__background-img")
             let fade = document.querySelector(".header__bottom-fade")
@@ -58,10 +65,10 @@ const Header = () => {
                     ></iframe>
                     <div className="header__details">
                         <h1 className='header__title'>
-                            {banner.movie.title}
+                            {banner.movie.title || banner.movie.name}
                         </h1>
                         <p className='header__description'>
-                            {banner.movie.overview}
+                            {truncate(banner.movie.overview, 300)}
                         </p>
                         <div className="header__buttons">
                             <div className="header__button header__button--1">

@@ -1,0 +1,34 @@
+.topToday {
+
+    &__item {
+        flex: 0 0 16.45%;
+        height: 210px;
+        transition: all 1s ease-in;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+    }
+
+    &__number {
+        font-size: 25rem;
+        color: black;
+        font-weight: 900;
+        -webkit-text-stroke: 4px #595959;
+        line-height: .8;
+        transform: translate(35%);
+    }
+
+    &__numberTen {
+        font-size: 20rem;
+        align-self: center;
+        transform: translate(0%);
+        letter-spacing: -2rem;
+    }
+
+    &__image {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+    }
+}
