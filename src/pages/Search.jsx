@@ -55,19 +55,20 @@ const Search = () => {
     const [genre, setGenre] = useState({})
     const [tvGenre, setTvGenre] = useState({})
 
-    const searchGenre = () => {
-        const isValidGenre = genres.find(genre => genre.id === id)
-        const isValidTVGenre = tvGenres.find(genre => genre.id === id)
-        setGenre(isValidGenre)
-        setTvGenre(isValidTVGenre)
-    }
     
     useEffect(() => {
-        searchGenre()
-        return() => {
-            searchGenre()
+        const checkIfValidGenre = () => {
+            const isValidGenre = genres.find(genre => genre.id === id)
+            const isValidTVGenre = tvGenres.find(genre => genre.id === id)
+            setGenre(isValidGenre)
+            setTvGenre(isValidTVGenre)
         }
-    })
+        
+        checkIfValidGenre()
+        return() => {
+            checkIfValidGenre()
+        }
+    }, [id])
 
     return (
         <div>
@@ -80,14 +81,14 @@ const Search = () => {
                 <Row
                     marginTop={"45px"}
                     title={`${genre.name} Movies`}
-                    fetchUrl={`/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genre?.id}`}
+                    fetchUrl={`/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genre.id}`}
                 />
             }
             { tvGenre?.name && 
                 <Row
-                    marginTop={genre?.name ? "" : "45px"}
-                    title={`${tvGenre?.name} TV Shows`}
-                    fetchUrl={`/discover/tv?include_adult=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${tvGenre?.id}`}
+                    marginTop={ genre?.name ? "" : "45px"}
+                    title={`${tvGenre.name} TV Shows`}
+                    fetchUrl={`/discover/tv?include_adult=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${tvGenre.id}`}
                 />
             }
             { !tvGenre?.name && !genre?.name && 
