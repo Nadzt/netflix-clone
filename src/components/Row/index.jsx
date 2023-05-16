@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 import "./Row.scss"
 import tmdb from '../../api/tmdb'
@@ -83,17 +84,37 @@ const Row = ({marginTop = 0, title, fetchUrl}) => {
         })
     }
 
+    const renderLink = (title, url) => {
+        const stringNumber = url.substring(url.indexOf("&with_genres=") + 13)
+        const genreNumber = parseInt(stringNumber)
+
+        return (
+            <h2 className='row__title'>
+                <Link
+                    to={`/genre/${genreNumber}`}
+                    className='row__title-link'
+                >
+                    {title}
+                </Link>
+                <div className="row__arrow">
+                    &#10097;
+                </div>
+            </h2>
+        )
+    }
+
     return (
         <div 
             className='row'
             style={ marginTop ? { marginTop } : {} }    
         >
-            <h2 className='row__title'>
-                {title}
-                <div className="row__arrow">
-                    &#10097;
-                </div>
-            </h2>
+            { fetchUrl.includes("&with_genres=") ? (
+                renderLink(title, fetchUrl)
+            ) : (
+                <h2 className='row__title'>
+                    {title}
+                </h2>
+            ) }
 
             <div className="row__content">
                 <div 
