@@ -2,6 +2,8 @@
 this is a simple netflix clone made with react.
 you can see it [here](https://netflix-clone-mocha-two.vercel.app/)
 
+![screenshot](https://github.com/Nadzt/netflix-clone/blob/main/images/screenshot-1.png)
+
 ### how to clone this repository:
 
 cd into the folder you want to copy this repo
