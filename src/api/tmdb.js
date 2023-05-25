@@ -4,7 +4,7 @@ export default axios.create({
     baseURL: "https://api.themoviedb.org/3",
     headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTA4YjcyYjkxZjAxOWU4ZThjMTE4MmY3M2Y0OWFiMCIsInN1YiI6IjY0MWRmNWNjZTBlYzUxMDBlNGFkOWIwNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OX0MbhuADlIANYqWQH0Nq-Z5SnaZrrNcRcvbkQCif8o'
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_BEARER}`
     }
 })
 
