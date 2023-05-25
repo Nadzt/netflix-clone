@@ -25,5 +25,5 @@ install dependencies
     npm i
 start the server
 
-    run dev
+    npm run dev
 done, go to the link displayed on your terminal!
